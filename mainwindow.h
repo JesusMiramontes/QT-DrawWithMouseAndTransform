@@ -13,6 +13,10 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    QPixmap *pix;
+    QPainter* paint;
+    QMatrix* matrix;
+    QPen* pen;
     ~MainWindow();
 
 private:
