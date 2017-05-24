@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "matriz.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,8 +16,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     QPixmap *pix;
     QPainter* paint;
-    QMatrix* matrix;
+    //QMatrix* matrix;
     QPen* pen;
+    matriz* dibujo;
+    void dibujarLinea(QPointF *p1, QPointF *p2);
+    void dibujarMatriz(matriz *m);
+    void configurarDibujo();
     ~MainWindow();
 
 private:
