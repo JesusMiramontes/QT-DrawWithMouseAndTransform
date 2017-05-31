@@ -19,6 +19,7 @@ public:
     float getAbsoluteValue(int renglon, int columna);
     QList<coordenada*> coordenadas;
     void setCeros();
+    void addCoord(float x, float y, float w=1);
 private:
 
 

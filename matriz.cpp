@@ -131,10 +131,13 @@ float matriz::getAbsoluteValue(int renglon, int columna)
 
 void matriz::setCeros()
 {
-    coordenada* c = new coordenada(0,0,0);
-    coordenadas.append(c);
-    c = new coordenada(0,0,0);
-    coordenadas.append(c);
-    c = new coordenada(0,0,0);
+    addCoord(0,0,0);
+    addCoord(0,0,0);
+    addCoord(0,0,0);
+}
+
+void matriz::addCoord(float x, float y, float w)
+{
+    coordenada* c = new coordenada(x,y, w);
     coordenadas.append(c);
 }

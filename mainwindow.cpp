@@ -58,19 +58,12 @@ void MainWindow::dibujarMatriz(matriz* m)
 }
 
 void MainWindow::configurarDibujo()
-{
-    coordenada* c = new coordenada(10,10);
-    dibujo->coordenadas.append(c);
-    c = new coordenada(210,10);
-    dibujo->coordenadas.append(c);
-    c = new coordenada(210,210);
-    dibujo->coordenadas.append(c);
-    c = new coordenada(10,210);
-    dibujo->coordenadas.append(c);
-    c = new coordenada(10,10);
-    dibujo->coordenadas.append(c);
-    //dibujo->coordenadas << (new coordenada(0,0));
-    //dibujo->coordenadas << (new coordenada(100,100));
+{ 
+    dibujo->addCoord(10,10);
+    dibujo->addCoord(210,10);
+    dibujo->addCoord(210,210);
+    dibujo->addCoord(10,210);
+    dibujo->addCoord(10,10);
 }
 
 MainWindow::~MainWindow()
