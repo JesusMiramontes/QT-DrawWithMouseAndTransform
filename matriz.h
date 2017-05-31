@@ -10,6 +10,7 @@ public:
     static matriz* transformar(matriz* matriz_transformacion, matriz* matriz_dibujo);
     static matriz* trasladar(matriz* matriz_dibujo, float tx=0, float ty=0);
     static matriz* escalar(matriz* matriz_dibujo, float sx=0, float sy=0);
+    static matriz* rotar(matriz* matriz_dibujo, int angle=0);
     static void rotar();
     static void escalar();
     int getTamano();
