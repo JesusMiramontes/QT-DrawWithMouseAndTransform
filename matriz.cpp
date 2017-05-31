@@ -8,13 +8,11 @@ matriz::matriz()
     // this->coordenadas << temp;
 }
 
-matriz* matriz::transformar(matriz *matriz_transformacion, matriz *matriz_escalar)
+matriz* matriz::transformar(matriz *matriz_transformacion, matriz *matriz_dibujo)
 {
     float result[3] = {0,0,0};
     matriz* temp = new matriz();
-    int i = 0;
-    int renglon = 0;
-    int columna = 0;
+
 
     //coordenada* c = new coordenada(0,0);
     //c = new coordenada(0,0);
@@ -23,41 +21,40 @@ matriz* matriz::transformar(matriz *matriz_transformacion, matriz *matriz_escala
     //temp->coordenadas.append(c);
     //c = new coordenada(0,0);
     //temp->coordenadas.append(c);
-    temp = matriz_escalar;
+    temp = matriz_dibujo;
 
-    while(i < matriz_transformacion->getTamano()){
+    //float result[3] = {0,0,0};
+    int m = 0;
+
+    while(m < matriz_dibujo->getTamano()){
         result[0] = 0; result[1] = 0; result[2] = 0;
-
-        while(renglon < 3){
-            while(columna < 3){
-                float f = matriz_transformacion->getValue(columna,renglon);
-                f *= (matriz_escalar->getValue(i,columna));
-                result[renglon] += f;
-                columna++;
+        for(int renglon = 0; renglon < 3; renglon++){
+            for(int columna = 0; columna < 3; columna++){
+                result[renglon] += matriz_transformacion->getValue(columna,renglon) * (matriz_dibujo->getValue(m,columna));
             }
-
-        renglon++;
         }
-        i++;
-        temp->setValue(i,0,floor(result[0]));
-        temp->setValue(i,1,floor(result[1]));
-        temp->setValue(i,2,1);
-
+        temp->setValue(m,0,floor(result[0]));
+        temp->setValue(m,1,floor(result[1]));
+        temp->setValue(m,2,1);
+        m++;
     }
+
+
 
     return temp;
 }
 
-matriz *matriz::trasladar(matriz* matriz_a_transformar, float tx, float ty)
+matriz *matriz::trasladar(matriz* matriz_dibujo, float tx, float ty)
 {
     matriz* matriz_transformacion = new matriz();
     matriz_transformacion->setCeros();
     matriz_transformacion->setValue(0,0,1);
     matriz_transformacion->setValue(1,1,1);
+    matriz_transformacion->setValue(2,2,1);
     matriz_transformacion->setValue(2,0,tx);
     matriz_transformacion->setValue(2,1,ty);
 
-    return transformar(matriz_transformacion, matriz_a_transformar);
+    return transformar(matriz_transformacion, matriz_dibujo);
 }
 
 int matriz::getTamano()
@@ -100,12 +97,30 @@ void matriz::setValue(int renglon, int columna, float value)
     }
 }
 
+float matriz::getAbsoluteValue(int renglon, int columna)
+{
+    switch(columna){
+        case 0:
+            return this->coordenadas[renglon]->x/this->coordenadas[renglon]->w;
+                break;
+        case 1:
+            return this->coordenadas[renglon]->y/this->coordenadas[renglon]->w;
+                break;
+        case 2:
+            return this->coordenadas[renglon]->w/this->coordenadas[renglon]->w;
+                break;
+        default:
+            return -1;
+                break;
+    }
+}
+
 void matriz::setCeros()
 {
-    coordenada* c = new coordenada(0,0);
+    coordenada* c = new coordenada(0,0,0);
     coordenadas.append(c);
-    c = new coordenada(0,0);
+    c = new coordenada(0,0,0);
     coordenadas.append(c);
-    c = new coordenada(0,0);
+    c = new coordenada(0,0,0);
     coordenadas.append(c);
 }

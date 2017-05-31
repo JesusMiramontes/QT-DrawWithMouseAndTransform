@@ -35,9 +35,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // pen.setCapStyle(Qt::SquareCap); //Forma de extremos de lina (cuadrado, redondeado, etc)
 
     configurarDibujo();
-    //dibujarMatriz(dibujo);
+    dibujarMatriz(dibujo);
 
-    matriz* nueva = matriz::trasladar(dibujo,110,110);
+    matriz* nueva = matriz::trasladar(dibujo,300,300);
     dibujarMatriz( nueva );
 }
 
@@ -50,8 +50,8 @@ void MainWindow::dibujarLinea(QPointF *p1, QPointF *p2)
 void MainWindow::dibujarMatriz(matriz* m)
 {
     for(int i = 0; i < m->getTamano()-1; i++){
-        QPointF* p1 = new QPointF(m->getValue(i,0),m->getValue(i,1));
-        QPointF* p2 = new QPointF(m->getValue(i+1,0),m->getValue(i+1,1));
+        QPointF* p1 = new QPointF(m->getAbsoluteValue(i,0),m->getValue(i,1));
+        QPointF* p2 = new QPointF(m->getAbsoluteValue(i+1,0),m->getValue(i+1,1));
         dibujarLinea(p1, p2);
     }
 }
