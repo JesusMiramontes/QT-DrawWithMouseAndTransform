@@ -50,11 +50,17 @@ void MainWindow::dibujarLinea(QPointF *p1, QPointF *p2)
 
 void MainWindow::dibujarMatriz(matriz* m)
 {
+    // Dibuja todos los puntos
     for(int i = 0; i < m->getTamano()-1; i++){
         QPointF* p1 = new QPointF(m->getAbsoluteValue(i,0),m->getValue(i,1));
         QPointF* p2 = new QPointF(m->getAbsoluteValue(i+1,0),m->getValue(i+1,1));
         dibujarLinea(p1, p2);
     }
+
+    //Dibuja linea entre el último punto y el primero
+    QPointF* p1 = new QPointF(m->getAbsoluteValue(0,0),m->getValue(0,1));
+    QPointF* p2 = new QPointF(m->getAbsoluteValue(m->getTamano()-1,0),m->getValue(m->getTamano()-1,1));
+    dibujarLinea(p1, p2);
 }
 
 void MainWindow::configurarDibujo()
@@ -63,7 +69,7 @@ void MainWindow::configurarDibujo()
     dibujo->addCoord(210,10);
     dibujo->addCoord(210,210);
     dibujo->addCoord(10,210);
-    dibujo->addCoord(10,10);
+    //dibujo->addCoord(10,10);
 }
 
 void MainWindow::redibujar()
