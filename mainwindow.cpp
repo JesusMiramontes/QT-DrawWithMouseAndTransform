@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     configurarDibujo();
     dibujarMatriz(dibujo);
 
-    matriz* nueva = matriz::trasladar(dibujo,300,300);
+    matriz* nueva = matriz::escalar(dibujo,2,2);
     dibujarMatriz( nueva );
 }
 
