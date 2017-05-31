@@ -3,10 +3,7 @@
 
 matriz::matriz()
 {
-    // coordenada temp = new coordenada(0,0);
-    // this->coordenadas << temp;
-    // this->coordenadas << temp;
-    // this->coordenadas << temp;
+
 }
 
 matriz* matriz::transformar(matriz *matriz_transformacion, matriz *matriz_dibujo)
@@ -67,8 +64,8 @@ matriz *matriz::rotar(matriz *matriz_dibujo, int angle)
     matriz_transformacion->setCeros();
     matriz_transformacion->setValue(0,0,cos(radians));
     matriz_transformacion->setValue(0,1,sin(radians));
-    matriz_transformacion->setValue(0,1,-sin(radians));
-    matriz_transformacion->setValue(0,2,cos(radians));
+    matriz_transformacion->setValue(1,0,-sin(radians));
+    matriz_transformacion->setValue(1,1,cos(radians));
     matriz_transformacion->setValue(2,2,1);
 
     return transformar(matriz_transformacion, matriz_dibujo);
