@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "matriz.h"
 #include <QPen>
+#include "mouse.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,6 +33,10 @@ private slots:
     void on_btnEscalar_clicked();
 
     void on_btnRotar_clicked();
+
+    void Mouse_current_pos();
+    void Mouse_Pressed();
+    void Mouse_Left();
 
 private:
     Ui::MainWindow *ui;

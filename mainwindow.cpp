@@ -7,12 +7,16 @@
 #include "math.h"
 #include "stdio.h"
 #include <QPen>
+#include "mouse.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->drawing_area, SIGNAL(mousePosition()), this, SLOT(Mouse_current_pos()));
+    connect(ui->drawing_area, SIGNAL(mousePressed()), this, SLOT(Mouse_Pressed()));
+    connect(ui->drawing_area, SIGNAL(mouseLeft()), this, SLOT(Mouse_Left()));
 
     // Configuración de pixmap
     // Asigna el tamaño del pixmap con respecto al tamaño del label donde se dibujará
@@ -36,8 +40,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //pen->setCapStyle(Qt::RoundCap); //Forma de extremos de lina (cuadrado, redondeado, etc)
     //pen->setJoinStyle(Qt::RoundJoin);
 
-    configurarDibujo();
-    dibujarMatriz(dibujo);
+    //configurarDibujo();
+    //dibujarMatriz(dibujo);
 
     //matriz* nueva = matriz::rotar(dibujo,10);
     //nueva = matriz::trasladar(nueva, 300, 300);
@@ -140,4 +144,20 @@ void MainWindow::on_btnRotar_clicked()
     dibujo = matriz::trasladar(dibujo, -dx, -dy);
 
     redibujar();
+}
+
+void MainWindow::Mouse_current_pos()
+{
+
+}
+
+void MainWindow::Mouse_Pressed()
+{
+    dibujo->addCoord(ui->drawing_area->x, ui->drawing_area->y);
+    redibujar();
+}
+
+void MainWindow::Mouse_Left()
+{
+
 }

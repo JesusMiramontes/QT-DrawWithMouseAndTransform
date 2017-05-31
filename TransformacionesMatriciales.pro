@@ -26,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     coordenada.cpp \
-    matriz.cpp
+    matriz.cpp \
+    mouse.cpp
 
 HEADERS  += mainwindow.h \
     coordenada.h \
-    matriz.h
+    matriz.h \
+    mouse.h
 
 FORMS    += mainwindow.ui
