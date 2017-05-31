@@ -15,11 +15,12 @@ public:
     static void escalar();
     int getTamano();
     float getValue(int renglon, int columna);
+    QColor getColor(int renglon);
     void setValue(int renglon, int columna, float value);
     float getAbsoluteValue(int renglon, int columna);
     QList<coordenada*> coordenadas;
     void setCeros();
-    void addCoord(float x, float y, float w=1);
+    void addCoord(float x, float y, float w=1, QColor color = Qt::green);
 private:
 
 

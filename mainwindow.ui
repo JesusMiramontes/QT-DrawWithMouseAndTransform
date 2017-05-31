@@ -181,6 +181,19 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="btnColor">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>310</y>
+      <width>101</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Seleccionar color</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

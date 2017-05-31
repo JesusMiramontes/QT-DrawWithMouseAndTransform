@@ -5,6 +5,7 @@
 #include "matriz.h"
 #include <QPen>
 #include "mouse.h"
+#include <QColor>
 
 namespace Ui {
 class MainWindow;
@@ -21,10 +22,11 @@ public:
     //QMatrix* matrix;
     //QPen* pen;
     matriz* dibujo;
-    void dibujarLinea(QPointF *p1, QPointF *p2);
+    void dibujarLinea(QPointF *p1, QPointF *p2, QColor c = Qt::green);
     void dibujarMatriz(matriz *m);
     void configurarDibujo();
     void redibujar();
+    QColor color;
     ~MainWindow();
 
 private slots:
@@ -37,6 +39,10 @@ private slots:
     void Mouse_current_pos();
     void Mouse_Pressed();
     void Mouse_Left();
+
+    void on_pushButton_clicked();
+
+    void on_btnColor_clicked();
 
 private:
     Ui::MainWindow *ui;

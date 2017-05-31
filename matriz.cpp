@@ -94,6 +94,11 @@ float matriz::getValue(int renglon, int columna)
     }
 }
 
+QColor matriz::getColor(int renglon)
+{
+        return this->coordenadas[renglon]->color;
+}
+
 void matriz::setValue(int renglon, int columna, float value)
 {
     switch(columna){
@@ -136,8 +141,8 @@ void matriz::setCeros()
     addCoord(0,0,0);
 }
 
-void matriz::addCoord(float x, float y, float w)
+void matriz::addCoord(float x, float y, float w, QColor color)
 {
-    coordenada* c = new coordenada(x,y, w);
+    coordenada* c = new coordenada(x,y, w,color);
     coordenadas.append(c);
 }
