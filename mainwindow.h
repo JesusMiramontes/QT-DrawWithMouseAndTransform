@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "matriz.h"
+#include <QPen>
 
 namespace Ui {
 class MainWindow;
@@ -17,7 +18,7 @@ public:
     QPixmap *pix;
     QPainter* paint;
     //QMatrix* matrix;
-    QPen* pen;
+    //QPen* pen;
     matriz* dibujo;
     void dibujarLinea(QPointF *p1, QPointF *p2);
     void dibujarMatriz(matriz *m);

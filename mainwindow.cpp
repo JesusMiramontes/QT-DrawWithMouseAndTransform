@@ -6,6 +6,7 @@
 #include "matriz.h"
 #include "math.h"
 #include "stdio.h"
+#include <QPen>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Configuración de pixmap
     // Asigna el tamaño del pixmap con respecto al tamaño del label donde se dibujará
     pix = new QPixmap(ui->drawing_area->width(), ui->drawing_area->height());
-    pix->fill(Qt::transparent); //Fondo transparente
+    pix->fill(Qt::black); //Fondo transparente
 
     // Instancía el painter
     paint = new QPainter(pix);
@@ -28,11 +29,12 @@ MainWindow::MainWindow(QWidget *parent) :
     dibujo = new matriz();
 
     // Configuración de pluma
-    pen = new QPen(); // Instancía la pluma
-    // pen.setStyle(Qt::SolidLine); // Establece el estilo de la línea
-    // pen.setWidth(width); // Establece el ancho de la línea
-    // pen.setBrush(Qt::black); // Color de línea
-    // pen.setCapStyle(Qt::SquareCap); //Forma de extremos de lina (cuadrado, redondeado, etc)
+    //pen = new QPen(); // Instancía la pluma
+    //pen->setStyle(Qt::SolidLine); //Estilo de linea
+    //pen->setWidth(3); //Ancho de linea
+    //pen->setBrush(Qt::green); //Color de lina
+    //pen->setCapStyle(Qt::RoundCap); //Forma de extremos de lina (cuadrado, redondeado, etc)
+    //pen->setJoinStyle(Qt::RoundJoin);
 
     configurarDibujo();
     dibujarMatriz(dibujo);
@@ -44,6 +46,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::dibujarLinea(QPointF *p1, QPointF *p2)
 {
+    QPen pen;  // creates a default pen
+
+    pen.setStyle(Qt::SolidLine); //Estilo de linea
+    pen.setWidth(3); //Ancho de linea
+    pen.setBrush(Qt::green); //Color de lina
+    pen.setCapStyle(Qt::RoundCap); //Forma de extremos de lina (cuadrado, redondeado, etc)
+    pen.setJoinStyle(Qt::RoundJoin);
+
+    paint->setPen(pen); //Color separador
     paint->drawLine(*p1, *p2);
     ui->drawing_area->setPixmap(*pix);
 }
@@ -74,7 +85,7 @@ void MainWindow::configurarDibujo()
 
 void MainWindow::redibujar()
 {
-    pix->fill(Qt::white); //Fondo
+    pix->fill(Qt::black); //Fondo
     dibujarMatriz(dibujo);
 }
 
