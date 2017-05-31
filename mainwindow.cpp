@@ -91,7 +91,22 @@ void MainWindow::on_btnTrasladar_clicked()
 
 void MainWindow::on_btnEscalar_clicked()
 {
+    // Almacena la posicion del punto fijo antes de escalar
+    float x, y;
+    x = dibujo->getValue(0,0);
+    y = dibujo->getValue(0,1);
+
+    // Escala el dibujo
     dibujo = matriz::escalar(dibujo, ui->iSx->text().toFloat(), ui->iSy->text().toFloat());
+
+    // Calcula la diferencia de pixeles entre la posicíon original y la nueva
+    float dx, dy;
+    dx = dibujo->getValue(0,0)-x;
+    dy = dibujo->getValue(0,1)-y;
+
+    // Traslada el dibujo a su posición original
+    dibujo = matriz::trasladar(dibujo, -dx, -dy);
+
     redibujar();
 }
 
