@@ -37,9 +37,9 @@ MainWindow::MainWindow(QWidget *parent) :
     configurarDibujo();
     dibujarMatriz(dibujo);
 
-    matriz* nueva = matriz::rotar(dibujo,10);
-    nueva = matriz::trasladar(nueva, 300, 300);
-    dibujarMatriz( nueva );
+    //matriz* nueva = matriz::rotar(dibujo,10);
+    //nueva = matriz::trasladar(nueva, 300, 300);
+    //dibujarMatriz( nueva );
 }
 
 void MainWindow::dibujarLinea(QPointF *p1, QPointF *p2)
@@ -66,7 +66,31 @@ void MainWindow::configurarDibujo()
     dibujo->addCoord(10,10);
 }
 
+void MainWindow::redibujar()
+{
+    pix->fill(Qt::white); //Fondo
+    dibujarMatriz(dibujo);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_btnTrasladar_clicked()
+{
+    dibujo = matriz::trasladar(dibujo, ui->iTx->text().toFloat(), ui->iTy->text().toFloat());
+    redibujar();
+}
+
+void MainWindow::on_btnEscalar_clicked()
+{
+    dibujo = matriz::escalar(dibujo, ui->iSx->text().toFloat(), ui->iSy->text().toFloat());
+    redibujar();
+}
+
+void MainWindow::on_btnRotar_clicked()
+{
+    dibujo = matriz::rotar(dibujo, ui->iAngulo->text().toFloat());
+    redibujar();
 }

@@ -22,7 +22,15 @@ public:
     void dibujarLinea(QPointF *p1, QPointF *p2);
     void dibujarMatriz(matriz *m);
     void configurarDibujo();
+    void redibujar();
     ~MainWindow();
+
+private slots:
+    void on_btnTrasladar_clicked();
+
+    void on_btnEscalar_clicked();
+
+    void on_btnRotar_clicked();
 
 private:
     Ui::MainWindow *ui;
