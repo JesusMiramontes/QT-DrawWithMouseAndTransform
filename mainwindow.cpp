@@ -97,6 +97,21 @@ void MainWindow::on_btnEscalar_clicked()
 
 void MainWindow::on_btnRotar_clicked()
 {
+    // Almacena la posicion del punto fijo antes de rotar
+    float x, y;
+    x = dibujo->getValue(0,0);
+    y = dibujo->getValue(0,1);
+
+    // Rota el dibujo
     dibujo = matriz::rotar(dibujo, ui->iAngulo->text().toFloat());
+
+    // Calcula la diferencia de pixeles entre la posicíon original y la nueva
+    float dx, dy;
+    dx = dibujo->getValue(0,0)-x;
+    dy = dibujo->getValue(0,1)-y;
+
+    // Traslada el dibujo a su posición original
+    dibujo = matriz::trasladar(dibujo, -dx, -dy);
+
     redibujar();
 }
