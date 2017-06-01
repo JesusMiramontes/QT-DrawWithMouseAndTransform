@@ -2,6 +2,7 @@
 #define MATRIZ_H
 #include "coordenada.h"
 #include "QList"
+#include <QMatrix>
 
 class matriz
 {
@@ -13,7 +14,7 @@ public:
     static matriz* transformar(matriz* matriz_transformacion, matriz* matriz_dibujo);
 
     // Recibe y regresa una matríz despues de trasladarla en x y y según los valores recibidos
-    static matriz* trasladar(matriz* matriz_dibujo, float tx=0, float ty=0);
+    static QMatrix* trasladar(float tx=0, float ty=0);
 
     // Recibe y regresa una matriz despues de escalarla según los valores recibidos
     static matriz* escalar(matriz* matriz_dibujo, float sx=0, float sy=0);

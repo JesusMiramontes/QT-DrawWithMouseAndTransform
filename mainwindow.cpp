@@ -9,6 +9,7 @@
 #include <QPen>
 #include "mouse.h"
 #include <QColorDialog>
+#include <QMatrix>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -113,7 +114,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnTrasladar_clicked()
 {
-    dibujo = matriz::trasladar(dibujo, ui->iTx->text().toFloat(), ui->iTy->text().toFloat());
+    QMatrix translationMatrix(1, 0, 0, 1, ui->iTx->text().toFloat(), ui->iTy->text().toFloat());
+    paint->setMatrix(translationMatrix);
     redibujar();
 }
 
@@ -133,7 +135,7 @@ void MainWindow::on_btnEscalar_clicked()
     dy = dibujo->getValue(0,1)-y;
 
     // Traslada el dibujo a su posición original
-    dibujo = matriz::trasladar(dibujo, -dx, -dy);
+    //dibujo = matriz::trasladar(dibujo, -dx, -dy);
 
     redibujar();
 }
@@ -154,7 +156,7 @@ void MainWindow::on_btnRotar_clicked()
     dy = dibujo->getValue(0,1)-y;
 
     // Traslada el dibujo a su posición original
-    dibujo = matriz::trasladar(dibujo, -dx, -dy);
+    //dibujo = matriz::trasladar(dibujo, -dx, -dy);
 
     redibujar();
 }

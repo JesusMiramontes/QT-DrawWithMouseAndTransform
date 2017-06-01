@@ -32,17 +32,11 @@ matriz* matriz::transformar(matriz *matriz_transformacion, matriz *matriz_dibujo
     return temp;
 }
 
-matriz *matriz::trasladar(matriz* matriz_dibujo, float tx, float ty)
+QMatrix *matriz::trasladar(float tx, float ty)
 {
-    matriz* matriz_transformacion = new matriz();
-    matriz_transformacion->setCeros();
-    matriz_transformacion->setValue(0,0,1);
-    matriz_transformacion->setValue(1,1,1);
-    matriz_transformacion->setValue(2,2,1);
-    matriz_transformacion->setValue(2,0,tx);
-    matriz_transformacion->setValue(2,1,ty);
+    QMatrix* matriz_traslacion = new QMatrix(1, 0, 0, 1, tx, ty);
 
-    return transformar(matriz_transformacion, matriz_dibujo);
+    return matriz_traslacion;
 }
 
 matriz *matriz::escalar(matriz *matriz_dibujo, float sx, float sy)
