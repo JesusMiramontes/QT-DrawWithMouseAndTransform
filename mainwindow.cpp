@@ -10,6 +10,7 @@
 #include "mouse.h"
 #include <QColorDialog>
 #include <QMatrix>
+#include <qmath.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,21 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // Instancia matriz
     dibujo = new matriz();
 
-    // Configuración de pluma
-    //pen = new QPen(); // Instancía la pluma
-    //pen->setStyle(Qt::SolidLine); //Estilo de linea
-    //pen->setWidth(3); //Ancho de linea
-    //pen->setBrush(Qt::green); //Color de lina
-    //pen->setCapStyle(Qt::RoundCap); //Forma de extremos de lina (cuadrado, redondeado, etc)
-    //pen->setJoinStyle(Qt::RoundJoin);
-
-    //configurarDibujo();
-    //dibujarMatriz(dibujo);
-
-    //matriz* nueva = matriz::rotar(dibujo,10);
-    //nueva = matriz::trasladar(nueva, 300, 300);
-    //dibujarMatriz( nueva );
-    //color = QColorDialog::getColor(Qt::white, this, "Choose color");
     color = Qt::green;
     configurarCanvas();
 }
@@ -121,42 +107,22 @@ void MainWindow::on_btnTrasladar_clicked()
 
 void MainWindow::on_btnEscalar_clicked()
 {
-    // Almacena la posicion del punto fijo antes de escalar
-    float x, y;
-    x = dibujo->getValue(0,0);
-    y = dibujo->getValue(0,1);
-
     // Escala el dibujo
-    dibujo = matriz::escalar(dibujo, ui->iSx->text().toFloat(), ui->iSy->text().toFloat());
+    QMatrix scalingMatrix(ui->iSx->text().toFloat(), 0, 0, ui->iSy->text().toFloat(), 0, 0);
 
-    // Calcula la diferencia de pixeles entre la posicíon original y la nueva
-    float dx, dy;
-    dx = dibujo->getValue(0,0)-x;
-    dy = dibujo->getValue(0,1)-y;
-
-    // Traslada el dibujo a su posición original
-    //dibujo = matriz::trasladar(dibujo, -dx, -dy);
-
+    paint->setMatrix(scalingMatrix);
     redibujar();
 }
 
 void MainWindow::on_btnRotar_clicked()
 {
-    // Almacena la posicion del punto fijo antes de rotar
-    float x, y;
-    x = dibujo->getValue(0,0);
-    y = dibujo->getValue(0,1);
+    double a = qDegreesToRadians(ui->iAngulo->text().toFloat());
 
-    // Rota el dibujo
-    dibujo = matriz::rotar(dibujo, ui->iAngulo->text().toFloat());
+    double sina = sin(a);
+    double cosa = cos(a);
 
-    // Calcula la diferencia de pixeles entre la posicíon original y la nueva
-    float dx, dy;
-    dx = dibujo->getValue(0,0)-x;
-    dy = dibujo->getValue(0,1)-y;
-
-    // Traslada el dibujo a su posición original
-    //dibujo = matriz::trasladar(dibujo, -dx, -dy);
+    QMatrix rotationMatrix(cosa, sina, -sina, cosa, 0, 0);
+    paint->setMatrix(rotationMatrix);
 
     redibujar();
 }
