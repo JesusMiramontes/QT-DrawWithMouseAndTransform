@@ -17,16 +17,30 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
+    // Elementos para dibujar en pantalla
     QPixmap *pix;
     QPainter* paint;
-    //QMatrix* matrix;
-    //QPen* pen;
+
+    // Objeto matríz que almacena las coordenadas del dibujo
     matriz* dibujo;
+
+    // Dibuja una línea de un punto A a un punto B usando el color recibido
     void dibujarLinea(QPointF *p1, QPointF *p2, QColor c = Qt::green);
+
+    // Recibe una matriz y dibuja una linea entre cada punto
     void dibujarMatriz(matriz *m);
+
+    // Dibuja un cuadrado simple en la pantalla
     void configurarDibujo();
+
+    // Limpia la pantalla y dibuja la matríz
     void redibujar();
+
+    // Limpia la pantalla
     void configurarCanvas();
+
+    // Almacena el último color seleccionado con el ColorDialog
     QColor color;
     ~MainWindow();
 

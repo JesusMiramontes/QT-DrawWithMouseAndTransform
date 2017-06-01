@@ -6,7 +6,11 @@ class coordenada
 {
 public:
     coordenada();
+
+    // Constructor que recibe los valores x, y, w, color.
     coordenada(float x, float y, float w=1, QColor color = Qt::green);
+
+    // Propiedades
     float x;
     float y;
     float w;

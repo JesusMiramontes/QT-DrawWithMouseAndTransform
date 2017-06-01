@@ -7,11 +7,18 @@
     <x>0</x>
     <y>0</y>
     <width>836</width>
-    <height>684</height>
+    <height>694</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{background-color: rgb(0, 0, 0);}
+QWidget{background-color: rgb(0, 0, 0);}
+QLabel{color:rgb(255,255,255);}
+QPushButton{color:rgb(255,255,255);background-color:rgb(16,15,17)}
+QLineEdit{color:rgb(255, 255, 255);}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="mouse" name="drawing_area">
@@ -39,7 +46,7 @@
       <x>730</x>
       <y>120</y>
       <width>101</width>
-      <height>100</height>
+      <height>102</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -133,7 +140,7 @@
       <x>730</x>
       <y>10</y>
       <width>101</width>
-      <height>100</height>
+      <height>102</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -194,6 +201,33 @@
      <string>Seleccionar color</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>631</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{color: rgb(0, 255, 0);}</string>
+    </property>
+    <property name="text">
+     <string>Jesús Miramontes G.</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -201,7 +235,7 @@
      <x>0</x>
      <y>0</y>
      <width>836</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
@@ -213,7 +247,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
