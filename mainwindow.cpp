@@ -49,6 +49,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //dibujarMatriz( nueva );
     //color = QColorDialog::getColor(Qt::white, this, "Choose color");
     color = Qt::green;
+    configurarCanvas();
 }
 
 void MainWindow::dibujarLinea(QPointF *p1, QPointF *p2, QColor c)
@@ -97,6 +98,12 @@ void MainWindow::redibujar()
 {
     pix->fill(Qt::black); //Fondo
     dibujarMatriz(dibujo);
+}
+
+void MainWindow::configurarCanvas()
+{
+    pix->fill(Qt::black);
+    ui->drawing_area->setPixmap(*pix);
 }
 
 MainWindow::~MainWindow()

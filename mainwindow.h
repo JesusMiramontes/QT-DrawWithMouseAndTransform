@@ -26,6 +26,7 @@ public:
     void dibujarMatriz(matriz *m);
     void configurarDibujo();
     void redibujar();
+    void configurarCanvas();
     QColor color;
     ~MainWindow();
 
